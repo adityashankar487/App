@@ -30,6 +30,7 @@ public class User {
 
 	private static void userDetails(Scanner scanner) {
 		Inventory inventory = new Inventory();
+		Inventory1 inventory1 = new Inventory1();
 		System.out.println("press 1 to search by bookname \npress 2 to search by bookAuthor\n"
 				+ "press 3 to view product details\npress 4 to exit the bookshop");
 		int number = scanner.nextInt();
@@ -38,7 +39,7 @@ public class User {
 			inventory.searchByBookName();
 			break;
 		case 2:
-			inventory.searchByBookAuthor();
+			inventory1.searchByBookAuthor();
 			break;
 		case 3:
 			Product.viewAvailableProducts();
