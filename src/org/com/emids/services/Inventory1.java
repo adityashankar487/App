@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 import org.com.emids.domain.Book;
 
-public class Inventory1 {
+public class Inventory1 extends Inventory{
 	static Scanner scanner = new Scanner(System.in);
 	static List<Book> listForAllBook = new ArrayList<>();
 
@@ -24,16 +24,19 @@ public class Inventory1 {
 		boolean flag = false;
 		while (iterator.hasNext()) {
 			flag = checkPresenceOfBook(iterator, bookauthor, null);
-			Book book = iterator.next();
 			if (flag) {
-				System.out.println("press 1 to add bookshelf\n" + "press 2 to buy books\n");
+				System.out.println("press 1 to add bookshelf\n" + "press 2 to buy books\n"+"press 3 to add to bookshelf");
 				int key = scanner.nextInt();
 				switch (key) {
 				case 1:
-					ShoppingCart.addToCart(book);;
-				
+					ShoppingCart.addToCart(iterator.next());;
+				     break;
 				case 2:
-					ShoppingCart.buyBook(book);
+					ShoppingCart.buyBook(iterator.next());
+					break;
+					
+				case 3:
+					CustomerBookShelf.addTo();
 					break;
 				default:
 					System.out.println("Invalid entry");

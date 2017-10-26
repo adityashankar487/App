@@ -10,7 +10,7 @@ import org.com.emids.domain.Book;
 public class Product {
 	public static final String availableProduct = null;
 
-	public static void viewAvailableProducts() {
+	public static Iterator<Book> viewAvailableProducts() {
 		System.out.printf("\n List of the books available");
 		System.out.println();
 		List<Book> availableProduct = new ArrayList<Book>(Product.addNewProduct());
@@ -20,6 +20,7 @@ public class Product {
 			Book book = (Book) iterator.next();
 			System.out.println(book.getName() + " " + book.getBookAuthor()+ " " + + book.getPrice());
 		}
+		return iterator;
 	}
 
 	public static List<Book> addNewProduct() {

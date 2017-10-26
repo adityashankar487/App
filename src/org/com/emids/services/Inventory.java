@@ -25,26 +25,30 @@ public class Inventory {
 	private void bookName(Scanner scanner, String bookname, Iterator<Book> iterator) {
 		boolean flag = false;
 		while (iterator.hasNext()) {
-			flag = checkPresenceOfBook(iterator, null, bookname);
-			Book book = iterator.next();
+			flag = checkPresenceOfBook(iterator, bookname);
 			if (flag) {
-				System.out.println("press 1 to add cart\n" + "press 2 to buy book");
+				System.out.println("press 1 to add cart\n" + "press 2 to buy book\n"+"press 3 to add to bookshelf");
 				int key = scanner.nextInt();
 				switch (key) {
 				case 1:
-					ShoppingCart.addToCart(book);
+					ShoppingCart.addToCart(iterator.next());
 					break;
 				case 2:
-					ShoppingCart.buyBook(book);
+					ShoppingCart.buyBook(iterator.next());
+					break;
+				case 3:
+					CustomerBookShelf.addTo();
 					break;
 				default:
 					System.out.println("invalid entry");
 					break;
 				}
 				System.out.println("book is available");
-			} else
+			} else {
 				System.out.println("book is not available");
-			break;
+				
+			}
+				
 		}
 	}
 
@@ -52,7 +56,7 @@ public class Inventory {
 
 	
 
-	private boolean checkPresenceOfBook(Iterator<Book> iterator, String bookauthor, String bookName) {
+	private boolean checkPresenceOfBook(Iterator<Book> iterator,  String bookName) {
 		boolean flag = false;
 		while (iterator.hasNext()) {
 			Book book = iterator.next();
